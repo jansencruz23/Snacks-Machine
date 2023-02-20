@@ -1,8 +1,9 @@
 package my.snacksmachine;
+import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+
 /**
  *
  * @author Jansen C. Cruz
@@ -30,15 +31,15 @@ public class SnacksMachine extends javax.swing.JFrame {
         setTitle("Snacks Machine");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(255, 102, 102));
-        jLabel1.setFont(new java.awt.Font("Gigi", 1, 26)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 153, 255));
+        jLabel1.setFont(new java.awt.Font("AdamGorry-Inline", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to the Sweet World!");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(252, 0, 0), 2, true));
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 255), 2, true));
         jLabel1.setOpaque(true);
 
-        panelBg.setBackground(new java.awt.Color(255, 255, 255));
+        panelBg.setBackground(new java.awt.Color(249, 235, 249));
 
         ImageIcon iconLogo = new ImageIcon(getClass().getResource("/icons/logo.png"));
         Image imgLogo = iconLogo.getImage().getScaledInstance(220, 150, Image.SCALE_SMOOTH);
@@ -47,20 +48,21 @@ public class SnacksMachine extends javax.swing.JFrame {
         lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIcon.setText(" ");
 
-        panelGrid.setBackground(new java.awt.Color(255, 255, 255));
+        panelGrid.setBackground(new java.awt.Color(249, 235, 249));
         panelGrid.setLayout(new java.awt.GridLayout(5, 1, 0, 7));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
+        jButton1.setBackground(new java.awt.Color(255, 153, 204));
         jButton1.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 0, 204));
+        jButton1.setForeground(new java.awt.Color(102, 0, 102));
         jButton1.setIcon(setButtonIcon("/icons/candy.png"));
-        jButton1.setIconTextGap(30);
         jButton1.setText("Candy");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 255), 2, true));
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 204), 2, true));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
-        jButton1.setIconTextGap(5);
+        jButton1.setIconTextGap(25);
+        jButton1.setMargin(new java.awt.Insets(2, 24, 3, 14));
         panelGrid.add(jButton1);
+        jButton1.getAccessibleContext().setAccessibleName("");
 
         jButton2.setBackground(new java.awt.Color(153, 255, 153));
         jButton2.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
@@ -71,28 +73,39 @@ public class SnacksMachine extends javax.swing.JFrame {
         jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setFocusable(false);
-        jButton2.setIconTextGap(5);
+        jButton2.setIconTextGap(27);
+        jButton2.setMargin(new java.awt.Insets(2, 24, 3, 14));
         panelGrid.add(jButton2);
+        jButton2.getAccessibleContext().setAccessibleName("");
 
         jButton3.setBackground(new java.awt.Color(255, 255, 153));
         jButton3.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(153, 51, 0));
+        jButton3.setIcon(setButtonIcon("/icons/gum.png"));
+        jButton3.setIconTextGap(10);
         jButton3.setText("Gum");
         jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 2, true));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setFocusable(false);
+        jButton3.setIconTextGap(35);
+        jButton3.setMargin(new java.awt.Insets(2, 24, 3, 14));
         panelGrid.add(jButton3);
+        jButton3.getAccessibleContext().setAccessibleName("");
 
-        jButton4.setBackground(new java.awt.Color(255, 153, 204));
+        jButton4.setBackground(new java.awt.Color(255, 195, 165));
         jButton4.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(102, 0, 102));
+        jButton4.setForeground(new java.awt.Color(58, 48, 23));
+        jButton4.setIcon(setButtonIcon("/icons/cookie.png"));
         jButton4.setText("Cookies");
-        jButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 204), 2, true));
+        jButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(161, 131, 53), 2, true));
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setFocusable(false);
+        jButton4.setIconTextGap(15);
+        jButton4.setMargin(new java.awt.Insets(2, 24, 3, 14));
         panelGrid.add(jButton4);
+        jButton4.getAccessibleContext().setAccessibleName("");
 
-        btnExit.setBackground(new java.awt.Color(51, 51, 51));
+        btnExit.setBackground(new java.awt.Color(64, 63, 63));
         btnExit.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Exit");
@@ -124,9 +137,9 @@ public class SnacksMachine extends javax.swing.JFrame {
             .addGroup(panelBgLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblIcon)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(panelGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
