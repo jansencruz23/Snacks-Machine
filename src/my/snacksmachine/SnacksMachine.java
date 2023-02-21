@@ -32,7 +32,7 @@ public class SnacksMachine extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setBackground(new java.awt.Color(255, 153, 255));
-        jLabel1.setFont(new java.awt.Font("AdamGorry-Inline", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to the Sweet World!");
