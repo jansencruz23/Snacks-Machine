@@ -1,5 +1,5 @@
 package my.snacksmachine;
-import java.awt.GridLayout;
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
  * @author Jansen C. Cruz
  */
 public class SnacksMachine extends javax.swing.JFrame {
+    Dispenser candy = new Dispenser(3, 50);
+    CashRegister cashier = new CashRegister(1000);
+    
     public SnacksMachine() {
         initComponents();
         setLocationRelativeTo(null);
@@ -21,7 +24,7 @@ public class SnacksMachine extends javax.swing.JFrame {
         panelBg = new javax.swing.JPanel();
         lblIcon = new javax.swing.JLabel();
         panelGrid = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnCandy = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -52,18 +55,23 @@ public class SnacksMachine extends javax.swing.JFrame {
         panelGrid.setBackground(new java.awt.Color(249, 235, 249));
         panelGrid.setLayout(new java.awt.GridLayout(5, 1, 0, 7));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 204));
-        jButton1.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(102, 0, 102));
-        jButton1.setIcon(setButtonIcon("/icons/candy.png"));
-        jButton1.setText("Candy");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 204), 2, true));
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusable(false);
-        jButton1.setIconTextGap(25);
-        jButton1.setMargin(new java.awt.Insets(2, 24, 3, 14));
-        panelGrid.add(jButton1);
-        jButton1.getAccessibleContext().setAccessibleName("");
+        btnCandy.setBackground(new java.awt.Color(255, 153, 204));
+        btnCandy.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
+        btnCandy.setForeground(new java.awt.Color(102, 0, 102));
+        btnCandy.setIcon(setButtonIcon("/icons/candy.png"));
+        btnCandy.setText("Candy");
+        btnCandy.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 204), 2, true));
+        btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCandy.setFocusable(false);
+        btnCandy.setIconTextGap(25);
+        btnCandy.setMargin(new java.awt.Insets(2, 24, 3, 14));
+        btnCandy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCandyActionPerformed(evt);
+            }
+        });
+        panelGrid.add(btnCandy);
+        btnCandy.getAccessibleContext().setAccessibleName("");
 
         jButton2.setBackground(new java.awt.Color(153, 255, 153));
         jButton2.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
@@ -173,11 +181,28 @@ public class SnacksMachine extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         int exit = JOptionPane.showOptionDialog(null, "Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, 1);
-        if(exit == 0)
-        {
+        if(exit == 0){
             System.exit(0);
         }
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnCandyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCandyActionPerformed
+        int pay = Integer.parseInt(JOptionPane.showInputDialog(null, "To buy a Candy please insert 50 cents"));
+        if(pay >= candy.getProductCost() && candy.getCount() > 0){
+            cashier.acceptAmount(pay);
+            candy.makeSale();
+            JOptionPane.showMessageDialog(null, "Please pickup your Candy and Enjoy!", "Thank you, come again", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Out of Stock", "Candy is out of stock", JOptionPane.INFORMATION_MESSAGE);
+            btnCandy.setEnabled(false);
+            btnCandy.setForeground(Color.WHITE);
+            btnCandy.setContentAreaFilled(false);
+            btnCandy.setOpaque(true);
+            btnCandy.setBackground(Color.RED);
+        }
+    }//GEN-LAST:event_btnCandyActionPerformed
 
     private static void sleepThread(){
         try{
@@ -205,8 +230,8 @@ public class SnacksMachine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCandy;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
