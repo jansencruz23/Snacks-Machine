@@ -2,6 +2,7 @@ package my.snacksmachine;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,8 +10,12 @@ import javax.swing.JOptionPane;
  * @author Jansen C. Cruz
  */
 public class SnacksMachine extends javax.swing.JFrame {
-    Dispenser candy = new Dispenser(3, 50);
     CashRegister cashier = new CashRegister(1000);
+    
+    Dispenser candy = new Dispenser(3, 50);
+    Dispenser chips = new Dispenser(3, 100);
+    Dispenser gum = new Dispenser(4, 10);
+    Dispenser cookies = new Dispenser(5, 40);
     
     public SnacksMachine() {
         initComponents();
@@ -25,9 +30,9 @@ public class SnacksMachine extends javax.swing.JFrame {
         lblIcon = new javax.swing.JLabel();
         panelGrid = new javax.swing.JPanel();
         btnCandy = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnChips = new javax.swing.JButton();
+        btnGum = new javax.swing.JButton();
+        btnCookies = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -67,52 +72,67 @@ public class SnacksMachine extends javax.swing.JFrame {
         btnCandy.setMargin(new java.awt.Insets(2, 24, 3, 14));
         btnCandy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCandyActionPerformed(evt);
+                onProductActionPerformed(evt);
             }
         });
         panelGrid.add(btnCandy);
         btnCandy.getAccessibleContext().setAccessibleName("");
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 153));
-        jButton2.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 51, 0));
-        jButton2.setIcon(setButtonIcon("/icons/chips.png")
+        btnChips.setBackground(new java.awt.Color(153, 255, 153));
+        btnChips.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
+        btnChips.setForeground(new java.awt.Color(0, 51, 0));
+        btnChips.setIcon(setButtonIcon("/icons/chips.png")
         );
-        jButton2.setText("Chips");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusable(false);
-        jButton2.setIconTextGap(27);
-        jButton2.setMargin(new java.awt.Insets(2, 24, 3, 14));
-        panelGrid.add(jButton2);
-        jButton2.getAccessibleContext().setAccessibleName("");
+        btnChips.setText("Chips");
+        btnChips.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
+        btnChips.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnChips.setFocusable(false);
+        btnChips.setIconTextGap(27);
+        btnChips.setMargin(new java.awt.Insets(2, 24, 3, 14));
+        btnChips.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onProductActionPerformed(evt);
+            }
+        });
+        panelGrid.add(btnChips);
+        btnChips.getAccessibleContext().setAccessibleName("");
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 153));
-        jButton3.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(153, 51, 0));
-        jButton3.setIcon(setButtonIcon("/icons/gum.png"));
-        jButton3.setIconTextGap(10);
-        jButton3.setText("Gum");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 2, true));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusable(false);
-        jButton3.setIconTextGap(35);
-        jButton3.setMargin(new java.awt.Insets(2, 24, 3, 14));
-        panelGrid.add(jButton3);
-        jButton3.getAccessibleContext().setAccessibleName("");
+        btnGum.setBackground(new java.awt.Color(255, 255, 153));
+        btnGum.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
+        btnGum.setForeground(new java.awt.Color(153, 51, 0));
+        btnGum.setIcon(setButtonIcon("/icons/gum.png"));
+        btnGum.setIconTextGap(10);
+        btnGum.setText("Gum");
+        btnGum.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 2, true));
+        btnGum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGum.setFocusable(false);
+        btnGum.setIconTextGap(35);
+        btnGum.setMargin(new java.awt.Insets(2, 24, 3, 14));
+        btnGum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onProductActionPerformed(evt);
+            }
+        });
+        panelGrid.add(btnGum);
+        btnGum.getAccessibleContext().setAccessibleName("");
 
-        jButton4.setBackground(new java.awt.Color(255, 195, 165));
-        jButton4.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(58, 48, 23));
-        jButton4.setIcon(setButtonIcon("/icons/cookie.png"));
-        jButton4.setText("Cookies");
-        jButton4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(161, 131, 53), 2, true));
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setFocusable(false);
-        jButton4.setIconTextGap(15);
-        jButton4.setMargin(new java.awt.Insets(2, 24, 3, 14));
-        panelGrid.add(jButton4);
-        jButton4.getAccessibleContext().setAccessibleName("");
+        btnCookies.setBackground(new java.awt.Color(255, 195, 165));
+        btnCookies.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
+        btnCookies.setForeground(new java.awt.Color(58, 48, 23));
+        btnCookies.setIcon(setButtonIcon("/icons/cookie.png"));
+        btnCookies.setText("Cookies");
+        btnCookies.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(161, 131, 53), 2, true));
+        btnCookies.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCookies.setFocusable(false);
+        btnCookies.setIconTextGap(15);
+        btnCookies.setMargin(new java.awt.Insets(2, 24, 3, 14));
+        btnCookies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onProductActionPerformed(evt);
+            }
+        });
+        panelGrid.add(btnCookies);
+        btnCookies.getAccessibleContext().setAccessibleName("");
 
         btnExit.setBackground(new java.awt.Color(64, 63, 63));
         btnExit.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
@@ -186,24 +206,54 @@ public class SnacksMachine extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnCandyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCandyActionPerformed
-        int pay = Integer.parseInt(JOptionPane.showInputDialog(null, "To buy a Candy please insert 50 cents"));
-        if(pay >= candy.getProductCost() && candy.getCount() > 0){
+    // method on click of the products, passing the pay, product, and the button to productClicked method
+    private void onProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onProductActionPerformed
+        var product = (JButton) evt.getSource();
+        int pay;
+        switch(product.getText()){
+            case "Candy":
+                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), candy.getProductCost())));
+                productClicked(pay, candy, btnCandy);
+                break;
+            case "Chips":
+                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), chips.getProductCost())));
+                productClicked(pay, chips, btnChips);
+                break;
+            case "Gum":
+                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), gum.getProductCost())));
+                productClicked(pay, gum, btnGum);
+                break;
+            case "Cookies":
+                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), cookies.getProductCost())));
+                productClicked(pay, cookies, btnCookies);
+                break;
+        }
+    }//GEN-LAST:event_onProductActionPerformed
+
+    // validate if pay is sufficient, validate if there are stocks left, and create changes to the button if no stocks are left
+    private void productClicked(int pay, Dispenser product, JButton btn){
+        if(pay >= product.getProductCost())
+        {
             cashier.acceptAmount(pay);
-            candy.makeSale();
-            JOptionPane.showMessageDialog(null, "Please pickup your Candy and Enjoy!", "Thank you, come again", JOptionPane.INFORMATION_MESSAGE);
+            product.makeSale();
+            JOptionPane.showMessageDialog(null, String.format("Please pickup your %s and Enjoy!", btn.getText()), "Thank you, come again", JOptionPane.INFORMATION_MESSAGE);
+            
+            if(product.getCount() <= 0)
+            {
+                JOptionPane.showMessageDialog(null, "Out of Stock", String.format("%s is out of stock", btn.getText()), JOptionPane.INFORMATION_MESSAGE);
+                btn.setEnabled(false);
+                btn.setForeground(Color.WHITE);
+                btn.setContentAreaFilled(false);
+                btn.setOpaque(true);
+                btn.setBackground(Color.RED);
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Out of Stock", "Candy is out of stock", JOptionPane.INFORMATION_MESSAGE);
-            btnCandy.setEnabled(false);
-            btnCandy.setForeground(Color.WHITE);
-            btnCandy.setContentAreaFilled(false);
-            btnCandy.setOpaque(true);
-            btnCandy.setBackground(Color.RED);
+            JOptionPane.showMessageDialog(null, "Insufficient amount", "Transaction Failed", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_btnCandyActionPerformed
-
+    }
+    
     private static void sleepThread(){
         try{
             Thread.sleep(1000);
@@ -231,10 +281,10 @@ public class SnacksMachine extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCandy;
+    private javax.swing.JButton btnChips;
+    private javax.swing.JButton btnCookies;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnGum;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblIcon;
