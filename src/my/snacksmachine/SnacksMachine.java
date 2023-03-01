@@ -17,6 +17,8 @@ public class SnacksMachine extends javax.swing.JFrame {
     Dispenser gum = new Dispenser(4, 10);
     Dispenser cookies = new Dispenser(5, 40);
     
+    int pay;
+    
     public SnacksMachine() {
         initComponents();
         setLocationRelativeTo(null);
@@ -209,29 +211,26 @@ public class SnacksMachine extends javax.swing.JFrame {
     // method on click of the products, passing the pay, product, and the button to productClicked method
     private void onProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onProductActionPerformed
         var product = (JButton) evt.getSource();
-        int pay;
         switch(product.getText()){
             case "Candy":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), candy.getProductCost())));
-                productClicked(pay, candy, btnCandy);
+                dispenseProduct(candy, btnCandy);
                 break;
             case "Chips":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), chips.getProductCost())));
-                productClicked(pay, chips, btnChips);
+                dispenseProduct(chips, btnChips);
                 break;
             case "Gum":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), gum.getProductCost())));
-                productClicked(pay, gum, btnGum);
+                dispenseProduct(gum, btnGum);
                 break;
             case "Cookies":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), cookies.getProductCost())));
-                productClicked(pay, cookies, btnCookies);
+                dispenseProduct(cookies, btnCookies);
                 break;
         }
     }//GEN-LAST:event_onProductActionPerformed
 
     // validate if pay is sufficient, validate if there are stocks left, and create changes to the button if no stocks are left
-    private void productClicked(int pay, Dispenser product, JButton btn){
+    private void dispenseProduct(Dispenser product, JButton btn){
+        pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", btn.getText(), product.getProductCost())));
+        
         if(pay >= product.getProductCost())
         {
             cashier.acceptAmount(pay);
