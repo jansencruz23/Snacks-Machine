@@ -17,6 +17,8 @@ public class SnacksMachine extends javax.swing.JFrame {
     Dispenser gum = new Dispenser(4, 10);
     Dispenser cookies = new Dispenser(5, 40);
     
+    int pay;
+    
     public SnacksMachine() {
         initComponents();
         setLocationRelativeTo(null);
@@ -83,7 +85,7 @@ public class SnacksMachine extends javax.swing.JFrame {
         btnChips.setForeground(new java.awt.Color(0, 51, 0));
         btnChips.setIcon(setButtonIcon("/icons/chips.png")
         );
-        btnChips.setText("Chips");
+        btnChips.setText("Chip");
         btnChips.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 204, 0), 2, true));
         btnChips.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnChips.setFocusable(false);
@@ -120,7 +122,7 @@ public class SnacksMachine extends javax.swing.JFrame {
         btnCookies.setFont(new java.awt.Font("Lucida Handwriting", 1, 14)); // NOI18N
         btnCookies.setForeground(new java.awt.Color(58, 48, 23));
         btnCookies.setIcon(setButtonIcon("/icons/cookie.png"));
-        btnCookies.setText("Cookies");
+        btnCookies.setText("Cookie");
         btnCookies.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(161, 131, 53), 2, true));
         btnCookies.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCookies.setFocusable(false);
@@ -201,58 +203,60 @@ public class SnacksMachine extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         int exit = JOptionPane.showOptionDialog(null, "Are you sure you want to exit?", "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, 1);
-        if(exit == 0){
+        if(exit == 0)
             System.exit(0);
-        }
     }//GEN-LAST:event_btnExitActionPerformed
 
     // method on click of the products, passing the pay, product, and the button to productClicked method
     private void onProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onProductActionPerformed
         var product = (JButton) evt.getSource();
-        int pay;
         switch(product.getText()){
             case "Candy":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), candy.getProductCost())));
-                productClicked(pay, candy, btnCandy);
+                dispenseProduct(candy, btnCandy);
                 break;
-            case "Chips":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), chips.getProductCost())));
-                productClicked(pay, chips, btnChips);
+            case "Chip":
+                dispenseProduct(chips, btnChips);
                 break;
             case "Gum":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), gum.getProductCost())));
-                productClicked(pay, gum, btnGum);
+                dispenseProduct(gum, btnGum);
                 break;
-            case "Cookies":
-                pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", product.getText(), cookies.getProductCost())));
-                productClicked(pay, cookies, btnCookies);
+            case "Cookie":
+                dispenseProduct(cookies, btnCookies);
                 break;
         }
     }//GEN-LAST:event_onProductActionPerformed
 
     // validate if pay is sufficient, validate if there are stocks left, and create changes to the button if no stocks are left
-    private void productClicked(int pay, Dispenser product, JButton btn){
-        if(pay >= product.getProductCost())
+    private void dispenseProduct(Dispenser product, JButton btn){
+        pay = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert %d cents", btn.getText(), product.getProductCost())));
+        
+        while(pay < product.getProductCost())
         {
-            cashier.acceptAmount(pay);
-            product.makeSale();
-            JOptionPane.showMessageDialog(null, String.format("Please pickup your %s and Enjoy!", btn.getText()), "Thank you, come again", JOptionPane.INFORMATION_MESSAGE);
-            
-            if(product.getCount() <= 0)
-            {
-                JOptionPane.showMessageDialog(null, "Out of Stock", String.format("%s is out of stock", btn.getText()), JOptionPane.INFORMATION_MESSAGE);
-                btn.setEnabled(false);
-                btn.setForeground(Color.WHITE);
-                btn.setContentAreaFilled(false);
-                btn.setOpaque(true);
-                btn.setBackground(Color.RED);
-            }
+            int payMore = Integer.parseInt(JOptionPane.showInputDialog(null, String.format("To buy a %s please insert additional %d cents", btn.getText(), product.getProductCost() - pay)));
+            pay += payMore;
         }
-        else
+        
+        cashier.acceptAmount(pay);
+        product.makeSale();
+        JOptionPane.showMessageDialog(null, String.format("Please pickup your %s and Enjoy!", btn.getText()), "Thank you, come again", JOptionPane.INFORMATION_MESSAGE);
+
+        if(pay > product.getProductCost())
         {
-            JOptionPane.showMessageDialog(null, "Insufficient amount", "Transaction Failed", JOptionPane.INFORMATION_MESSAGE);
+            int change = cashier.giveChange(pay, product.getProductCost());
+            JOptionPane.showMessageDialog(null, "Please get your change: " + change, "Change", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        if(product.getCount() <= 0)
+        {
+            JOptionPane.showMessageDialog(null, "Out of Stock", String.format("%s is out of stock", btn.getText()), JOptionPane.ERROR_MESSAGE);
+            btn.setEnabled(false);
+            btn.setForeground(Color.WHITE);
+            btn.setContentAreaFilled(false);
+            btn.setOpaque(true);
+            btn.setBackground(Color.RED);
         }
     }
+
     
     private static void sleepThread(){
         try{

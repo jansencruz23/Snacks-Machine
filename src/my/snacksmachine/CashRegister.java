@@ -17,4 +17,8 @@ public class CashRegister {
     public void acceptAmount(int amount){
         cashOnHand += amount;
     }
+    
+    public int giveChange(int pay, int cost){
+        return pay - cost;
+    }
 }

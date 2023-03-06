@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2002%20-%20FEBRUARY/Java%20AWT/CandyMachine_git/Snacks-Machine/src/my/snacksmachine/SnacksMachine.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2002%20-%20FEBRUARY/Java%20AWT/CandyMachine_git/Snacks-Machine/manifest.mf</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2002%20-%20FEBRUARY/Java%20AWT/CandyMachine_git/Snacks-Machine/src/my/snacksmachine/Dispenser.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2002%20-%20FEBRUARY/Java%20AWT/CandyMachine_git/Snacks-Machine/src/my/snacksmachine/CashRegister.java</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2002%20-%20FEBRUARY/Java%20AWT/CandyMachine_git/Snacks-Machine/src/icons/splash.jpg</file>
             <file>file:/D:/User/Jansen/Self%20Study/2023%20-%2002%20-%20FEBRUARY/Java%20AWT/CandyMachine_git/Snacks-Machine/src/icons/candy.png</file>
+=======
+            <file>file:/C:/BSCS1/Projects/SnacksMachin_2/Snacks-Machine/src/my/snacksmachine/SnacksMachine.java</file>
+            <file>file:/C:/BSCS1/Projects/SnacksMachin_2/Snacks-Machine/src/my/snacksmachine/CashRegister.java</file>
+            <file>file:/C:/BSCS1/Projects/SnacksMachin_2/Snacks-Machine/src/my/snacksmachine/Dispenser.java</file>
+>>>>>>> 56046f050e75bdb707ac99b1f1abaa2fc51e1e66
         </group>
     </open-files>
 </project-private>

@@ -185,7 +185,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="setButtonIcon(&quot;/icons/chips.png&quot;)&#xa;    " type="code"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Chips"/>
+                <Property name="text" type="java.lang.String" value="Chip"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2">
@@ -261,7 +261,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="setButtonIcon(&quot;/icons/cookie.png&quot;)" type="code"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cookies"/>
+                <Property name="text" type="java.lang.String" value="Cookie"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2">
